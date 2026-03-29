@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		93A70B522F78CA7A00B4B399 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B532F78CA7A00B4B399 /* Secrets.swift */; };
+		93A70B512F78CA7A00B4B399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B502F78CA7A00B4B399 /* Assets.xcassets */; };
+		93A70B2C2F78CA7A00B4B399 /* lexis_prd_v2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B232F78CA7A00B4B399 /* lexis_prd_v2.txt */; };
+		93A70B2D2F78CA7A00B4B399 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B272F78CA7A00B4B399 /* README.md */; };
+		93A70B2E2F78CA7A00B4B399 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B262F78CA7A00B4B399 /* QuizView.swift */; };
+		93A70B2F2F78CA7A00B4B399 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B292F78CA7A00B4B399 /* SettingsView.swift */; };
+		93A70B302F78CA7A00B4B399 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B222F78CA7A00B4B399 /* ArchiveView.swift */; };
+		93A70B312F78CA7A00B4B399 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B2A2F78CA7A00B4B399 /* Theme.swift */; };
+		93A70B322F78CA7A00B4B399 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B2B2F78CA7A00B4B399 /* TodayView.swift */; };
+		93A70B332F78CA7A00B4B399 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B252F78CA7A00B4B399 /* Models.swift */; };
+		93A70B342F78CA7A00B4B399 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B282F78CA7A00B4B399 /* Services.swift */; };
+		93A70B352F78CA7A00B4B399 /* LexisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B242F78CA7A00B4B399 /* LexisApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		93A70B052F78CA3300B4B399 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93A70AEB2F78CA3200B4B399 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93A70AF22F78CA3200B4B399;
+			remoteInfo = Lexis;
+		};
+		93A70B0F2F78CA3300B4B399 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93A70AEB2F78CA3200B4B399 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93A70AF22F78CA3200B4B399;
+			remoteInfo = Lexis;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		93A70B532F78CA7A00B4B399 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		93A70B502F78CA7A00B4B399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93A70AF32F78CA3200B4B399 /* Lexis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A70B042F78CA3300B4B399 /* LexisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LexisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A70B0E2F78CA3300B4B399 /* LexisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LexisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A70B222F78CA7A00B4B399 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		93A70B232F78CA7A00B4B399 /* lexis_prd_v2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = lexis_prd_v2.txt; sourceTree = "<group>"; };
+		93A70B242F78CA7A00B4B399 /* LexisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexisApp.swift; sourceTree = "<group>"; };
+		93A70B252F78CA7A00B4B399 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		93A70B262F78CA7A00B4B399 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		93A70B272F78CA7A00B4B399 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93A70B282F78CA7A00B4B399 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		93A70B292F78CA7A00B4B399 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		93A70B2A2F78CA7A00B4B399 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		93A70B2B2F78CA7A00B4B399 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		93A70B462F78D47B00B4B399 /* Lexis.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Lexis.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		93A70B072F78CA3300B4B399 /* LexisTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LexisTests;
+			sourceTree = "<group>";
+		};
+		93A70B112F78CA3300B4B399 /* LexisUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LexisUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93A70AF02F78CA3200B4B399 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B012F78CA3300B4B399 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B0B2F78CA3300B4B399 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93A70AEA2F78CA3200B4B399 = {
+			isa = PBXGroup;
+			children = (
+				93A70B532F78CA7A00B4B399 /* Secrets.swift */,
+				93A70B502F78CA7A00B4B399 /* Assets.xcassets */,
+				93A70B072F78CA3300B4B399 /* LexisTests */,
+				93A70B112F78CA3300B4B399 /* LexisUITests */,
+				93A70AF42F78CA3200B4B399 /* Products */,
+				93A70B222F78CA7A00B4B399 /* ArchiveView.swift */,
+				93A70B232F78CA7A00B4B399 /* lexis_prd_v2.txt */,
+				93A70B242F78CA7A00B4B399 /* LexisApp.swift */,
+				93A70B252F78CA7A00B4B399 /* Models.swift */,
+				93A70B262F78CA7A00B4B399 /* QuizView.swift */,
+				93A70B272F78CA7A00B4B399 /* README.md */,
+				93A70B282F78CA7A00B4B399 /* Services.swift */,
+				93A70B292F78CA7A00B4B399 /* SettingsView.swift */,
+				93A70B2A2F78CA7A00B4B399 /* Theme.swift */,
+				93A70B2B2F78CA7A00B4B399 /* TodayView.swift */,
+			);
+			sourceTree = "<group>";
+		};
+		93A70AF42F78CA3200B4B399 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93A70AF32F78CA3200B4B399 /* Lexis.app */,
+				93A70B042F78CA3300B4B399 /* LexisTests.xctest */,
+				93A70B0E2F78CA3300B4B399 /* LexisUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93A70B472F78D47B00B4B399 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93A70AF22F78CA3200B4B399 /* Lexis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93A70B172F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "Lexis" */;
+			buildPhases = (
+				93A70AEF2F78CA3200B4B399 /* Sources */,
+				93A70AF02F78CA3200B4B399 /* Frameworks */,
+				93A70AF12F78CA3200B4B399 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lexis;
+			packageProductDependencies = (
+			);
+			productName = Lexis;
+			productReference = 93A70AF32F78CA3200B4B399 /* Lexis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93A70B032F78CA3300B4B399 /* LexisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93A70B1C2F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "LexisTests" */;
+			buildPhases = (
+				93A70B002F78CA3300B4B399 /* Sources */,
+				93A70B012F78CA3300B4B399 /* Frameworks */,
+				93A70B022F78CA3300B4B399 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93A70B062F78CA3300B4B399 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				93A70B072F78CA3300B4B399 /* LexisTests */,
+			);
+			name = LexisTests;
+			packageProductDependencies = (
+			);
+			productName = LexisTests;
+			productReference = 93A70B042F78CA3300B4B399 /* LexisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		93A70B0D2F78CA3300B4B399 /* LexisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93A70B1F2F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "LexisUITests" */;
+			buildPhases = (
+				93A70B0A2F78CA3300B4B399 /* Sources */,
+				93A70B0B2F78CA3300B4B399 /* Frameworks */,
+				93A70B0C2F78CA3300B4B399 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93A70B102F78CA3300B4B399 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				93A70B112F78CA3300B4B399 /* LexisUITests */,
+			);
+			name = LexisUITests;
+			packageProductDependencies = (
+			);
+			productName = LexisUITests;
+			productReference = 93A70B0E2F78CA3300B4B399 /* LexisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93A70AEB2F78CA3200B4B399 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					93A70AF22F78CA3200B4B399 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					93A70B032F78CA3300B4B399 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 93A70AF22F78CA3200B4B399;
+					};
+					93A70B0D2F78CA3300B4B399 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 93A70AF22F78CA3200B4B399;
+					};
+				};
+			};
+			buildConfigurationList = 93A70AEE2F78CA3200B4B399 /* Build configuration list for PBXProject "Lexis" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93A70AEA2F78CA3200B4B399;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 93A70AF42F78CA3200B4B399 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 93A70B472F78D47B00B4B399 /* Products */;
+					ProjectRef = 93A70B462F78D47B00B4B399 /* Lexis.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				93A70AF22F78CA3200B4B399 /* Lexis */,
+				93A70B032F78CA3300B4B399 /* LexisTests */,
+				93A70B0D2F78CA3300B4B399 /* LexisUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93A70AF12F78CA3200B4B399 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93A70B512F78CA7A00B4B399 /* Assets.xcassets in Resources */,
+				93A70B2C2F78CA7A00B4B399 /* lexis_prd_v2.txt in Resources */,
+				93A70B2D2F78CA7A00B4B399 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B022F78CA3300B4B399 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B0C2F78CA3300B4B399 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93A70AEF2F78CA3200B4B399 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93A70B522F78CA7A00B4B399 /* Secrets.swift in Sources */,
+				93A70B2E2F78CA7A00B4B399 /* QuizView.swift in Sources */,
+				93A70B2F2F78CA7A00B4B399 /* SettingsView.swift in Sources */,
+				93A70B302F78CA7A00B4B399 /* ArchiveView.swift in Sources */,
+				93A70B312F78CA7A00B4B399 /* Theme.swift in Sources */,
+				93A70B322F78CA7A00B4B399 /* TodayView.swift in Sources */,
+				93A70B332F78CA7A00B4B399 /* Models.swift in Sources */,
+				93A70B342F78CA7A00B4B399 /* Services.swift in Sources */,
+				93A70B352F78CA7A00B4B399 /* LexisApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B002F78CA3300B4B399 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93A70B0A2F78CA3300B4B399 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93A70B062F78CA3300B4B399 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93A70AF22F78CA3200B4B399 /* Lexis */;
+			targetProxy = 93A70B052F78CA3300B4B399 /* PBXContainerItemProxy */;
+		};
+		93A70B102F78CA3300B4B399 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93A70AF22F78CA3200B4B399 /* Lexis */;
+			targetProxy = 93A70B0F2F78CA3300B4B399 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		93A70B182F78CA3300B4B399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lexis.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.Lexis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93A70B192F78CA3300B4B399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lexis.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.Lexis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		93A70B1A2F78CA3300B4B399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		93A70B1B2F78CA3300B4B399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = T333TYUH35;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93A70B1D2F78CA3300B4B399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.LexisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lexis.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lexis";
+			};
+			name = Debug;
+		};
+		93A70B1E2F78CA3300B4B399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.LexisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lexis.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lexis";
+			};
+			name = Release;
+		};
+		93A70B202F78CA3300B4B399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.LexisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Lexis;
+			};
+			name = Debug;
+		};
+		93A70B212F78CA3300B4B399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T333TYUH35;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Lexisapp.LexisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Lexis;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93A70AEE2F78CA3200B4B399 /* Build configuration list for PBXProject "Lexis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A70B1A2F78CA3300B4B399 /* Debug */,
+				93A70B1B2F78CA3300B4B399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93A70B172F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "Lexis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A70B182F78CA3300B4B399 /* Debug */,
+				93A70B192F78CA3300B4B399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93A70B1C2F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "LexisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A70B1D2F78CA3300B4B399 /* Debug */,
+				93A70B1E2F78CA3300B4B399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93A70B1F2F78CA3300B4B399 /* Build configuration list for PBXNativeTarget "LexisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A70B202F78CA3300B4B399 /* Debug */,
+				93A70B212F78CA3300B4B399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 93A70AEB2F78CA3200B4B399 /* Project object */;
+}
