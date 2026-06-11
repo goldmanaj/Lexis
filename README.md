@@ -1,4 +1,4 @@
-# Lexis — Setup Guide
+# Lexis — Guide
 
 ## Create the Xcode project
 
