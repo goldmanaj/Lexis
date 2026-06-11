@@ -56,7 +56,14 @@ struct QuizView: View {
             // Force a re-render so the lock check refreshes
             // SwiftUI will re-evaluate isUnlocked automatically
         }
-        .onAppear { prepareAnswers() }
+        .onAppear {
+            prepareAnswers()
+            if !isUnlocked {
+                Analytics.shared.logEvent("QuizLockScreenViewed")
+            } else if isUnlocked && store.todayEntry != nil && !store.hasAnsweredToday {
+                Analytics.shared.logEvent("QuizStarted")
+            }
+        }
         .onChange(of: store.todayEntry?.id) { _ in prepareAnswers() }
     }
 
@@ -87,8 +94,8 @@ struct QuizView: View {
 
                 VStack(spacing: 4) {
                     Text("unlocks at")
-                        .font(.system(size: 10))
-                        .kerning(1)
+                        .font(.system(size: 12, weight: .medium))
+                        .kerning(0.8)
                         .foregroundColor(.lexisSubtle)
                     Text(unlockTimeFormatted)
                         .font(.lexisSerif(20))
@@ -124,8 +131,8 @@ struct QuizView: View {
 
                 if let entry = store.todayEntry {
                     Text("what does this word mean?")
-                        .font(.system(size: 10))
-                        .kerning(1)
+                        .font(.system(size: 13, weight: .medium))
+                        .kerning(0.8)
                         .foregroundColor(.lexisSubtle)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.bottom, 10)
@@ -137,7 +144,7 @@ struct QuizView: View {
                         .padding(.bottom, 6)
 
                     Text(entry.phonetic)
-                        .font(.system(size: 12).italic())
+                        .font(.system(size: 14).italic())
                         .foregroundColor(.lexisMuted)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.bottom, 28)
@@ -150,6 +157,8 @@ struct QuizView: View {
                                 onTap: {
                                     selectedAnswer = answer
                                     store.recordQuizAnswer(answer)
+                                    let correct = answer == entry.definition
+                                    Analytics.shared.logEvent(correct ? "QuizAnsweredCorrect" : "QuizAnsweredWrong")
                                 }
                             )
                         }
@@ -175,8 +184,8 @@ struct QuizView: View {
                    let selected = store.todaySelectedAnswer {
 
                     Text("today's quiz")
-                        .font(.system(size: 10))
-                        .kerning(1)
+                        .font(.system(size: 13, weight: .medium))
+                        .kerning(0.8)
                         .foregroundColor(.lexisSubtle)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.bottom, 10)
@@ -188,7 +197,7 @@ struct QuizView: View {
                         .padding(.bottom, 6)
 
                     Text(entry.phonetic)
-                        .font(.system(size: 12).italic())
+                        .font(.system(size: 14).italic())
                         .foregroundColor(.lexisMuted)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.bottom, 28)
@@ -212,7 +221,7 @@ struct QuizView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
 
                     Text("Come back tomorrow for a new word.")
-                        .font(.system(size: 11))
+                        .font(.system(size: 13))
                         .foregroundColor(.lexisSubtle)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.top, 6)
@@ -279,7 +288,7 @@ struct AnswerButton: View {
     var body: some View {
         Button(action: onTap) {
             Text(text)
-                .font(.system(size: 13))
+                .font(.system(size: 15))
                 .foregroundColor(textColor)
                 .lineSpacing(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -311,4 +320,3 @@ struct LockIcon: View {
         .frame(width: 40, height: 44)
     }
 }
-

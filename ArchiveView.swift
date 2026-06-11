@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ArchiveView: View {
     @EnvironmentObject var store: WordStore
+    @EnvironmentObject var engine: LayoutEngine
     @State private var selectedEntry: WordEntry?
 
     var body: some View {
@@ -9,44 +10,18 @@ struct ArchiveView: View {
             Color.lexisBg.ignoresSafeArea()
 
             if store.archive.isEmpty {
-                emptyState
+                // If empty, we could still use SDUI, but for simplicity
+                // we'll use a direct component or server-driven empty state.
+                ArchiveEmptyStateSection()
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        HStack {
-                            AppTitle()
-                            Spacer()
-                            Text("\(store.archive.count) words")
-                                .font(.system(size: 11))
-                                .foregroundColor(.lexisSubtle)
-                        }
-                        .padding(.bottom, 20)
-
-                        SectionLabel(text: "past words")
-                            .padding(.bottom, 14)
-
-                        ForEach(store.archive) { entry in
-                            Button(action: { selectedEntry = entry }) {
-                                HStack(alignment: .center) {
-                                    VStack(alignment: .leading, spacing: 3) {
-                                        Text(entry.word)
-                                            .font(.lexisSerif(17))
-                                            .foregroundColor(.lexisArchive)
-                                        Text(entry.partOfSpeech)
-                                            .font(.system(size: 11).italic())
-                                            .foregroundColor(.lexisMuted)
-                                    }
-                                    Spacer()
-                                    Text(archiveDate(entry.date))
-                                        .font(.system(size: 11))
-                                        .foregroundColor(.lexisSubtle)
-                                }
-                                .padding(.vertical, 12)
-                            }
-                            .buttonStyle(.plain)
-
-                            Divider()
-                                .background(Color.lexisDimmed)
+                        let sections = engine.sections(for: "archive")
+                        ForEach(sections) { section in
+                            ComponentRegistry.resolve(
+                                section,
+                                context: RenderContext(store: store)
+                            )
                         }
 
                         Spacer(minLength: 40)
@@ -59,26 +34,13 @@ struct ArchiveView: View {
         .sheet(item: $selectedEntry) { entry in
             WordDetailView(entry: entry)
         }
-    }
-
-    // MARK: - Empty state
-
-    var emptyState: some View {
-        VStack(spacing: 10) {
-            Text("No words yet")
-                .font(.lexisSerif(17))
-                .foregroundColor(.lexisMuted)
-            Text("Your archive builds up one word at a time.")
-                .font(.system(size: 13))
-                .foregroundColor(.lexisSubtle)
+        .onAppear {
+            Analytics.shared.logEvent("ArchiveViewed")
         }
-    }
-
-    // MARK: - Date formatting
-
-    func archiveDate(_ date: Date) -> String {
-        if Calendar.current.isDateInToday(date) { return "Today" }
-        if Calendar.current.isDateInYesterday(date) { return "Yesterday" }
-        return date.formatted(.dateTime.month(.abbreviated).day())
+        .onReceive(NotificationCenter.default.publisher(for: ArchiveListSection.selectionNotification)) { notification in
+            if let entry = notification.object as? WordEntry {
+                selectedEntry = entry
+            }
+        }
     }
 }

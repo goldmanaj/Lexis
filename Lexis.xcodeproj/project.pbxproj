@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93A70B522F78CA7A00B4B399 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B532F78CA7A00B4B399 /* Secrets.swift */; };
-		93A70B512F78CA7A00B4B399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B502F78CA7A00B4B399 /* Assets.xcassets */; };
+		72644F6ACBBB1A922413E62B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07C1EE7AFB21456E96BBD13 /* Analytics.swift */; };
+		9324D38E2F995B2B007BA7A5 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38A2F995B2B007BA7A5 /* AdService.swift */; };
+		9324D38F2F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38B2F995B2B007BA7A5 /* ComponentRegistry.swift */; };
+		9324D3902F995B2B007BA7A5 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38C2F995B2B007BA7A5 /* LayoutEngine.swift */; };
+		9324D3912F995B2B007BA7A5 /* SDUIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38D2F995B2B007BA7A5 /* SDUIModels.swift */; };
+		9324D3922F995B2B007BA7A5 /* AdCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D3892F995B2B007BA7A5 /* AdCardView.swift */; };
+		9324D3932F995B2B007BA7A5 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38A2F995B2B007BA7A5 /* AdService.swift */; };
+		9324D3942F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38B2F995B2B007BA7A5 /* ComponentRegistry.swift */; };
+		9324D3952F995B2B007BA7A5 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38C2F995B2B007BA7A5 /* LayoutEngine.swift */; };
+		9324D3962F995B2B007BA7A5 /* SDUIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38D2F995B2B007BA7A5 /* SDUIModels.swift */; };
+		9324D3972F995B2B007BA7A5 /* AdCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D3892F995B2B007BA7A5 /* AdCardView.swift */; };
+		9324D3982F995B2B007BA7A5 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38A2F995B2B007BA7A5 /* AdService.swift */; };
+		9324D3992F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38B2F995B2B007BA7A5 /* ComponentRegistry.swift */; };
+		9324D39A2F995B2B007BA7A5 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38C2F995B2B007BA7A5 /* LayoutEngine.swift */; };
+		9324D39B2F995B2B007BA7A5 /* SDUIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D38D2F995B2B007BA7A5 /* SDUIModels.swift */; };
+		9324D39C2F995B2B007BA7A5 /* AdCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324D3892F995B2B007BA7A5 /* AdCardView.swift */; };
+		9391DFE02F9986A800B87BA4 /* AdMobAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391DFDF2F9986A800B87BA4 /* AdMobAliases.swift */; };
 		93A70B2C2F78CA7A00B4B399 /* lexis_prd_v2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B232F78CA7A00B4B399 /* lexis_prd_v2.txt */; };
 		93A70B2D2F78CA7A00B4B399 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B272F78CA7A00B4B399 /* README.md */; };
 		93A70B2E2F78CA7A00B4B399 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B262F78CA7A00B4B399 /* QuizView.swift */; };
@@ -19,6 +34,9 @@
 		93A70B332F78CA7A00B4B399 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B252F78CA7A00B4B399 /* Models.swift */; };
 		93A70B342F78CA7A00B4B399 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B282F78CA7A00B4B399 /* Services.swift */; };
 		93A70B352F78CA7A00B4B399 /* LexisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A70B242F78CA7A00B4B399 /* LexisApp.swift */; };
+		93A70B512F78CA7A00B4B399 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A70B502F78CA7A00B4B399 /* Assets.xcassets */; };
+		93FFD6962F9958E10019730D /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 93FFD6952F9958E10019730D /* GoogleMobileAds */; };
+		F105A053F83142EB2877D568 /* LaunchScreen.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE44DD47BA434B6A6F2D46 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		93A70B532F78CA7A00B4B399 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		93A70B502F78CA7A00B4B399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4FCE44DD47BA434B6A6F2D46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9324D3892F995B2B007BA7A5 /* AdCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCardView.swift; sourceTree = "<group>"; };
+		9324D38A2F995B2B007BA7A5 /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
+		9324D38B2F995B2B007BA7A5 /* ComponentRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentRegistry.swift; sourceTree = "<group>"; };
+		9324D38C2F995B2B007BA7A5 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
+		9324D38D2F995B2B007BA7A5 /* SDUIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIModels.swift; sourceTree = "<group>"; };
+		9391DFDF2F9986A800B87BA4 /* AdMobAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobAliases.swift; sourceTree = "<group>"; };
 		93A70AF32F78CA3200B4B399 /* Lexis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lexis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A70B042F78CA3300B4B399 /* LexisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LexisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A70B0E2F78CA3300B4B399 /* LexisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LexisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +78,8 @@
 		93A70B2A2F78CA7A00B4B399 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		93A70B2B2F78CA7A00B4B399 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		93A70B462F78D47B00B4B399 /* Lexis.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Lexis.xcodeproj; sourceTree = "<group>"; };
+		93A70B502F78CA7A00B4B399 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F07C1EE7AFB21456E96BBD13 /* Analytics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93FFD6962F9958E10019730D /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +124,11 @@
 		93A70AEA2F78CA3200B4B399 = {
 			isa = PBXGroup;
 			children = (
-				93A70B532F78CA7A00B4B399 /* Secrets.swift */,
+				9324D3892F995B2B007BA7A5 /* AdCardView.swift */,
+				9324D38A2F995B2B007BA7A5 /* AdService.swift */,
+				9324D38B2F995B2B007BA7A5 /* ComponentRegistry.swift */,
+				9324D38C2F995B2B007BA7A5 /* LayoutEngine.swift */,
+				9324D38D2F995B2B007BA7A5 /* SDUIModels.swift */,
 				93A70B502F78CA7A00B4B399 /* Assets.xcassets */,
 				93A70B072F78CA3300B4B399 /* LexisTests */,
 				93A70B112F78CA3300B4B399 /* LexisUITests */,
@@ -113,6 +143,9 @@
 				93A70B292F78CA7A00B4B399 /* SettingsView.swift */,
 				93A70B2A2F78CA7A00B4B399 /* Theme.swift */,
 				93A70B2B2F78CA7A00B4B399 /* TodayView.swift */,
+				4FCE44DD47BA434B6A6F2D46 /* LaunchScreen.storyboard */,
+				F07C1EE7AFB21456E96BBD13 /* Analytics.swift */,
+				9391DFDF2F9986A800B87BA4 /* AdMobAliases.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +161,8 @@
 		};
 		93A70B472F78D47B00B4B399 /* Products */ = {
 			isa = PBXGroup;
+			children = (
+			);
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -147,8 +182,6 @@
 			dependencies = (
 			);
 			name = Lexis;
-			packageProductDependencies = (
-			);
 			productName = Lexis;
 			productReference = 93A70AF32F78CA3200B4B399 /* Lexis.app */;
 			productType = "com.apple.product-type.application";
@@ -170,8 +203,6 @@
 				93A70B072F78CA3300B4B399 /* LexisTests */,
 			);
 			name = LexisTests;
-			packageProductDependencies = (
-			);
 			productName = LexisTests;
 			productReference = 93A70B042F78CA3300B4B399 /* LexisTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -193,8 +224,6 @@
 				93A70B112F78CA3300B4B399 /* LexisUITests */,
 			);
 			name = LexisUITests;
-			packageProductDependencies = (
-			);
 			productName = LexisUITests;
 			productReference = 93A70B0E2F78CA3300B4B399 /* LexisUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -231,6 +260,9 @@
 			);
 			mainGroup = 93A70AEA2F78CA3200B4B399;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				93FFD6942F9958E10019730D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 93A70AF42F78CA3200B4B399 /* Products */;
 			projectDirPath = "";
@@ -281,7 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93A70B522F78CA7A00B4B399 /* Secrets.swift in Sources */,
+				9324D3932F995B2B007BA7A5 /* AdService.swift in Sources */,
+				9324D3942F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */,
+				9391DFE02F9986A800B87BA4 /* AdMobAliases.swift in Sources */,
+				9324D3952F995B2B007BA7A5 /* LayoutEngine.swift in Sources */,
+				9324D3962F995B2B007BA7A5 /* SDUIModels.swift in Sources */,
+				9324D3972F995B2B007BA7A5 /* AdCardView.swift in Sources */,
 				93A70B2E2F78CA7A00B4B399 /* QuizView.swift in Sources */,
 				93A70B2F2F78CA7A00B4B399 /* SettingsView.swift in Sources */,
 				93A70B302F78CA7A00B4B399 /* ArchiveView.swift in Sources */,
@@ -290,6 +327,8 @@
 				93A70B332F78CA7A00B4B399 /* Models.swift in Sources */,
 				93A70B342F78CA7A00B4B399 /* Services.swift in Sources */,
 				93A70B352F78CA7A00B4B399 /* LexisApp.swift in Sources */,
+				F105A053F83142EB2877D568 /* LaunchScreen.storyboard in Sources */,
+				72644F6ACBBB1A922413E62B /* Analytics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +336,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9324D3982F995B2B007BA7A5 /* AdService.swift in Sources */,
+				9324D3992F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */,
+				9324D39A2F995B2B007BA7A5 /* LayoutEngine.swift in Sources */,
+				9324D39B2F995B2B007BA7A5 /* SDUIModels.swift in Sources */,
+				9324D39C2F995B2B007BA7A5 /* AdCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +348,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9324D38E2F995B2B007BA7A5 /* AdService.swift in Sources */,
+				9324D38F2F995B2B007BA7A5 /* ComponentRegistry.swift in Sources */,
+				9324D3902F995B2B007BA7A5 /* LayoutEngine.swift in Sources */,
+				9324D3912F995B2B007BA7A5 /* SDUIModels.swift in Sources */,
+				9324D3922F995B2B007BA7A5 /* AdCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +687,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93FFD6942F9958E10019730D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93FFD6952F9958E10019730D /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93FFD6942F9958E10019730D /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93A70AEB2F78CA3200B4B399 /* Project object */;
 }

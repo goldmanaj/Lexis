@@ -34,8 +34,8 @@ struct SectionLabel: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(.system(size: 9, weight: .regular))
-            .kerning(2)
+            .font(.system(size: 11, weight: .medium))
+            .kerning(1.6)
             .foregroundColor(.lexisSubtle)
     }
 }

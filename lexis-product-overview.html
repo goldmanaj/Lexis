@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexis — AI-Powered Product Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    /* ===== Lexis Design Tokens ===== */
+    :root {
+      --bg: #0f0e0d;
+      --bg-surface: #1a1815;
+      --bg-dimmed: #1e1c18;
+      --text-primary: #f0ece4;
+      --text-cream: #c8bfb0;
+      --text-muted: #7a6f5e;
+      --text-subtle: #5a5650;
+      --gold: #c4a96b;
+      --gold-dim: rgba(196, 169, 107, 0.12);
+      --gold-glow: rgba(196, 169, 107, 0.06);
+      --green: #6dba8f;
+      --border: #2a2825;
+      --border-faint: rgba(42, 40, 37, 0.5);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Export Controls ===== */
+    .export-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      background: rgba(15, 14, 13, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .export-bar .brand {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--text-subtle);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .export-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .export-btn:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .export-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .export-btn.exporting {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* ===== Page Container ===== */
+    #capture-target {
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+    }
+
+    /* ===== Hero Header ===== */
+    .hero {
+      text-align: center;
+      padding: 60px 0 50px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-cream);
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 5px 14px;
+      background: var(--bg-dimmed);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+
+    .meta-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ===== Section Styling ===== */
+    .section {
+      margin-top: 56px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .section h2 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 14px;
+      color: var(--text-cream);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+
+    /* ===== Outline Cards ===== */
+    .outline-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .outline-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 28px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .outline-card:hover {
+      border-color: rgba(196, 169, 107, 0.25);
+      box-shadow: 0 0 30px var(--gold-glow);
+    }
+
+    .outline-card .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card-number {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold-dim);
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      color: var(--text-primary);
+    }
+
+    .outline-card p {
+      font-size: 13px;
+      color: var(--text-cream);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .card-details {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-faint);
+    }
+
+    .card-details li {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.9;
+      list-style: none;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .card-details li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ===== Tech Stack Badges ===== */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tech-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      padding: 6px 16px;
+      background: var(--bg-dimmed);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== Architecture Summary ===== */
+    .arch-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .arch-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .arch-item .arch-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .arch-item h4 {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .arch-item p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== Flow Diagram ===== */
+    .diagram-container {
+      margin-top: 32px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 24px;
+      overflow-x: auto;
+    }
+
+    .diagram-container .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Override Mermaid defaults to match Lexis palette */
+    .diagram-container .mermaid svg {
+      max-width: 100%;
+    }
+
+    /* ===== Divider ===== */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+    }
+
+    .footer-brand {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--text-subtle);
+      margin-bottom: 8px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+      .page { padding: 60px 20px 40px; }
+      .hero h1 { font-size: 30px; }
+      .arch-row { grid-template-columns: 1fr; }
+      .hero-meta { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ===== Mermaid Theme Overrides ===== */
+    .node rect, .node polygon { rx: 8; ry: 8; }
+
+    /* ===== Key Decisions Section ===== */
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .decision-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+    }
+
+    .decision-card h4 {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+    }
+
+    .decision-card p {
+      font-size: 12px;
+      color: var(--text-cream);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    @media (max-width: 640px) {
+      .decisions-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Print / PDF Export ===== */
+    @media print {
+      .export-bar, .toast { display: none !important; }
+
+      html, body {
+        background: #0f0e0d !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .page {
+        padding-top: 20px;
+        max-width: 100%;
+      }
+
+      .outline-card, .decision-card, .arch-item, .diagram-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section {
+        break-inside: avoid;
+        page-break-before: auto;
+      }
+
+      .divider {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .hero {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .footer {
+        break-before: avoid;
+        page-break-before: avoid;
+      }
+
+      @page {
+        size: A4;
+        margin: 12mm 16mm;
+      }
+    }
+
+    /* Toast notification for export */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--bg-surface);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Export Controls -->
+  <div class="export-bar" id="exportBar">
+    <span class="brand">LEXIS</span>
+    <div class="export-btns">
+      <button class="export-btn" id="exportPdf" onclick="exportAsPDF()">
+        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+        Export as PDF
+      </button>
+      <button class="export-btn" id="exportPng" onclick="exportAsPNG()">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Export as PNG
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">PNG exported successfully</div>
+
+  <!-- Capture Target -->
+  <div id="capture-target">
+    <div class="page">
+
+      <!-- ===== HERO ===== -->
+      <header class="hero">
+        <div class="hero-label">Product Architecture</div>
+        <h1>Lexis</h1>
+        <p class="hero-subtitle">
+          An AI-powered daily vocabulary app for iOS that uses on-device Apple Intelligence
+          to surface one genuinely rare, advanced English word each day — completely offline and private.
+        </p>
+        <div class="hero-meta">
+          <span class="meta-tag"><span class="dot"></span>iOS / SwiftUI</span>
+          <span class="meta-tag"><span class="dot"></span>Apple Intelligence</span>
+          <span class="meta-tag"><span class="dot"></span>On-Device ML</span>
+          <span class="meta-tag"><span class="dot"></span>Server-Driven UI</span>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- ===== PRODUCT OUTLINE ===== -->
+      <section class="section">
+        <div class="section-label">Product Outline</div>
+        <h2>How Lexis Works</h2>
+        <p>
+          Lexis is designed around a single interaction loop: one word, one day, one quiz.
+          Every layer of the system — from AI generation to notification scheduling — reinforces
+          this cadence to create a calm, habitual vocabulary practice.
+        </p>
+
+        <div class="outline-grid">
+
+          <!-- Step 1 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">01</span>
+              <span class="card-title">AI Word Generation</span>
+            </div>
+            <p>
+              Each day, Lexis invokes Apple's on-device <strong>FoundationModels</strong> framework
+              (Apple Intelligence) to generate a single advanced vocabulary word. The AI is prompted
+              with strict curation criteria — words must be genuinely obscure and span diverse domains
+              (linguistics, philosophy, natural history, science). A deduplication engine ensures no
+              word is ever repeated.
+            </p>
+            <ul class="card-details">
+              <li>Structured JSON prompt → word, IPA phonetic, part of speech, definition, etymology, example sentence</li>
+              <li>Generates 3 plausible-but-wrong quiz distractors in the same inference pass</li>
+              <li>3-attempt retry with fallback to curated offline WordBank</li>
+              <li>All generation runs on-device — zero network calls, zero data collection</li>
+            </ul>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">02</span>
+              <span class="card-title">Content Processing & Caching</span>
+            </div>
+            <p>
+              The raw AI output goes through a robust parsing pipeline: markdown fences are stripped,
+              smart quotes are normalized, and the JSON is extracted even if the model adds surrounding prose.
+              Parsed data is encoded into a <strong>WordEntry</strong> model and persisted to UserDefaults
+              so the word loads instantly on revisit — the AI only runs once per day.
+            </p>
+            <ul class="card-details">
+              <li>Resilient JSON parser with key-spelling fallbacks (partOfSpeech / part_of_speech)</li>
+              <li>Persistent seen-words set prevents lifetime repeats across sessions</li>
+              <li>Archive grows daily with full word history</li>
+            </ul>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">03</span>
+              <span class="card-title">User Experience Layer</span>
+            </div>
+            <p>
+              The word is presented on a dark, literary interface inspired by reading by lamplight.
+              Users see the word in serif typography, hear it pronounced via <strong>AVSpeechSynthesizer</strong>,
+              and explore its definition, etymology, and example sentence in a carefully typeset layout.
+              The UI is driven by a <strong>Server-Driven UI engine</strong> backed by CloudKit, allowing
+              layout updates without app releases.
+            </p>
+            <ul class="card-details">
+              <li>Four-tab navigation: Today, Archive, Quiz, Settings</li>
+              <li>Text-to-speech pronunciation with British English voice</li>
+              <li>Server-Driven UI: CloudKit delivers layout descriptors → ComponentRegistry resolves SwiftUI views</li>
+              <li>Streak tracking with visual gold dot indicators</li>
+            </ul>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">04</span>
+              <span class="card-title">AI-Powered Quiz System</span>
+            </div>
+            <p>
+              At a user-configurable time each day, a quiz unlocks presenting the day's word alongside
+              4 definition choices — the correct one plus 3 AI-generated distractors. These wrong answers
+              are generated alongside the word in a single inference call, ensuring they are contextually
+              plausible. One attempt per day; results persist and cannot be retried.
+            </p>
+            <ul class="card-details">
+              <li>Time-locked quiz with configurable unlock schedule</li>
+              <li>AI-generated distractors calibrated to be plausible but incorrect</li>
+              <li>Instant visual feedback: green glow for correct, muted red for wrong</li>
+              <li>Quiz state persists via UserDefaults with date-based answer tracking</li>
+            </ul>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">05</span>
+              <span class="card-title">Notifications & Habit Loop</span>
+            </div>
+            <p>
+              Two independent local notification channels — one for the daily word, one for the quiz reminder —
+              are fully configurable with on/off toggles and time pickers. A notification preview shows exactly
+              what appears on the lock screen. This closing of the habit loop (prompt → learn → quiz) drives
+              daily retention.
+            </p>
+            <ul class="card-details">
+              <li>UNUserNotifications with repeating calendar triggers</li>
+              <li>Independent scheduling for word delivery and quiz reminder</li>
+              <li>Preview rendering matches iOS lock screen appearance</li>
+            </ul>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="outline-card">
+            <div class="card-header">
+              <span class="card-number">06</span>
+              <span class="card-title">Privacy-First Analytics</span>
+            </div>
+            <p>
+              Telemetry is captured via CloudKit's public database — no third-party SDKs, no user accounts,
+              no personally identifiable data. Events track funnel metrics (app launch → word viewed → quiz
+              started → quiz answered), latency measurements for AI generation, and error diagnostics.
+              All analytics calls are fire-and-forget on background threads.
+            </p>
+            <ul class="card-details">
+              <li>CloudKit TelemetryEvent records: event name, timestamp, latency, error context</li>
+              <li>Async/await with background priority — never blocks UI</li>
+              <li>Performance instrumentation wraps AI generation with wall-clock timing</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ===== TECH STACK ===== -->
+      <section class="section">
+        <div class="section-label">Technology</div>
+        <h2>Stack & Architecture</h2>
+        <p>
+          Lexis is a native SwiftUI app built entirely with Apple-first technologies.
+          No external dependencies beyond AdMob — everything else leverages the platform.
+        </p>
+        <div class="tech-stack">
+          <span class="tech-badge">SwiftUI</span>
+          <span class="tech-badge">FoundationModels (Apple Intelligence)</span>
+          <span class="tech-badge">AVSpeechSynthesizer</span>
+          <span class="tech-badge">CloudKit</span>
+          <span class="tech-badge">UserNotifications</span>
+          <span class="tech-badge">UserDefaults</span>
+          <span class="tech-badge">Google AdMob</span>
+          <span class="tech-badge">Server-Driven UI</span>
+        </div>
+
+        <div class="arch-row">
+          <div class="arch-item">
+            <div class="arch-icon">🧠</div>
+            <h4>On-Device AI</h4>
+            <p>FoundationModels LanguageModelSession generates words entirely on-device with zero network dependency</p>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon">☁️</div>
+            <h4>CloudKit Backend</h4>
+            <p>Server-Driven UI layouts and privacy-first telemetry via iCloud public database</p>
+          </div>
+          <div class="arch-item">
+            <div class="arch-icon">🔒</div>
+            <h4>Privacy First</h4>
+            <p>No accounts, no tracking, no PII. All AI processing stays on the user's device</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ===== KEY DECISIONS ===== -->
+      <section class="section">
+        <div class="section-label">Design Decisions</div>
+        <h2>Key Technical Choices</h2>
+
+        <div class="decisions-grid">
+          <div class="decision-card">
+            <h4>Why On-Device AI?</h4>
+            <p>Eliminates API costs, removes network dependency, and ensures complete privacy. The app works fully offline after installation — no server required for core functionality.</p>
+          </div>
+          <div class="decision-card">
+            <h4>Why Server-Driven UI?</h4>
+            <p>CloudKit-backed layout descriptors allow iterating on screen composition, reordering sections, and inserting ad placements without App Store review cycles.</p>
+          </div>
+          <div class="decision-card">
+            <h4>Why Single-Word Cadence?</h4>
+            <p>Cognitive science shows spaced repetition with minimal load outperforms bulk learning. One word per day respects attention and builds lasting habit loops.</p>
+          </div>
+          <div class="decision-card">
+            <h4>Why Offline WordBank Fallback?</h4>
+            <p>Graceful degradation ensures the app always delivers value — even on devices that don't support Apple Intelligence or when the AI exhausts retries.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ===== FLOW DIAGRAM ===== -->
+      <section class="section">
+        <div class="section-label">System Flow</div>
+        <h2>AI-Powered Workflow Diagram</h2>
+        <p>
+          End-to-end data flow from app launch through AI generation, content delivery,
+          quiz interaction, and analytics capture.
+        </p>
+
+        <div class="diagram-container">
+          <pre class="mermaid">
+%%{init: {
+  'theme': 'dark',
+  'themeVariables': {
+    'primaryColor': '#1a1815',
+    'primaryTextColor': '#f0ece4',
+    'primaryBorderColor': '#c4a96b',
+    'lineColor': '#5a5650',
+    'secondaryColor': '#1e1c18',
+    'tertiaryColor': '#0f0e0d',
+    'nodeTextColor': '#f0ece4',
+    'edgeLabelBackground': '#0f0e0d',
+    'clusterBkg': '#1a1815',
+    'clusterBorder': '#2a2825',
+    'titleColor': '#c4a96b',
+    'fontSize': '13px'
+  }
+}}%%
+
+flowchart TD
+    A["📱 App Launch"]:::start --> B{"Is today's word\ncached?"}
+    B -->|"Yes"| C["Load from\nUserDefaults"]
+    B -->|"No"| D{"Apple Intelligence\navailable?"}
+
+    D -->|"Yes"| E["🧠 FoundationModels\nLanguageModelSession"]
+    D -->|"No"| F["📚 Offline\nWordBank"]
+
+    E --> G["Structured JSON Prompt\n— word, IPA, definition,\netymology, example,\n3 distractors"]
+    G --> H{"Parse & validate\nJSON response"}
+    H -->|"Success"| I{"Word already\nseen?"}
+    H -->|"Failure"| J{"Retries\nremaining?"}
+    J -->|"Yes (up to 3)"| E
+    J -->|"No"| F
+
+    I -->|"No — unique"| K["Create WordEntry\nmodel"]
+    I -->|"Yes — duplicate"| J
+
+    F --> K
+
+    C --> L["📖 Today View\n— Server-Driven UI"]
+    K --> M["Cache to\nUserDefaults"]
+    M --> N["Add to Archive\n& Seen Words"]
+    N --> L
+
+    L --> O["🔊 AVSpeechSynthesizer\nPronunciation"]
+    L --> P["📊 CloudKit\nAnalytics"]
+
+    L --> Q{"Quiz unlock\ntime reached?"}
+    Q -->|"Not yet"| R["🔒 Lock Screen\nwith countdown"]
+    Q -->|"Yes"| S["🎯 Quiz View\n4 answer choices"]
+
+    S --> T{"User selects\nanswer"}
+    T --> U["Record result\n& show feedback"]
+    U --> P
+
+    P --> V["☁️ CloudKit\nTelemetry Events"]
+
+    subgraph SDUI["Server-Driven UI Layer"]
+        W["CloudKit fetches\nScreenLayout records"] --> X["LayoutEngine resolves\nsection descriptors"]
+        X --> Y["ComponentRegistry maps\nto SwiftUI views"]
+    end
+
+    L -.->|"Layout source"| SDUI
+
+    subgraph NOTIFY["Notification System"]
+        Z1["⏰ Daily Word\nReminder"] --> Z2["UNUserNotifications\nCalendar Trigger"]
+        Z3["⏰ Quiz Time\nReminder"] --> Z2
+    end
+
+    classDef start fill:#1e1c18,stroke:#c4a96b,stroke-width:2px,color:#f0ece4
+    classDef default fill:#1a1815,stroke:#2a2825,stroke-width:1px,color:#f0ece4
+          </pre>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer class="footer">
+        <div class="footer-brand">LEXIS</div>
+        <p>AI-Powered Daily Vocabulary for iOS</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    // Initialize Mermaid with Lexis theme
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      fontFamily: "'Inter', sans-serif",
+      flowchart: {
+        curve: 'basis',
+        padding: 16,
+        nodeSpacing: 40,
+        rankSpacing: 50,
+        htmlLabels: true,
+        useMaxWidth: true
+      }
+    });
+
+    // Export as PDF
+    function exportAsPDF() {
+      window.print();
+    }
+
+    // Export as PNG
+    async function exportAsPNG() {
+      const btn = document.getElementById('exportPng');
+      const toast = document.getElementById('toast');
+      const exportBar = document.getElementById('exportBar');
+
+      btn.classList.add('exporting');
+      btn.innerHTML = '<span>Rendering...</span>';
+
+      // Temporarily hide the export bar for capture
+      exportBar.style.display = 'none';
+
+      // Wait a tick for DOM update
+      await new Promise(r => setTimeout(r, 100));
+
+      try {
+        const target = document.getElementById('capture-target');
+        const canvas = await html2canvas(target, {
+          backgroundColor: '#0f0e0d',
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          width: target.scrollWidth,
+          height: target.scrollHeight,
+          windowWidth: target.scrollWidth,
+          windowHeight: target.scrollHeight
+        });
+
+        // Download
+        const link = document.createElement('a');
+        link.download = 'Lexis-Product-Overview.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        // Show toast
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      } catch (err) {
+        console.error('Export failed:', err);
+        alert('Export failed. Try right-clicking the page and using "Save as Image" or take a screenshot.');
+      }
+
+      // Restore export bar
+      exportBar.style.display = 'flex';
+      btn.classList.remove('exporting');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Export as PNG';
+    }
+  </script>
+
+</body>
+</html>

@@ -26,6 +26,7 @@ struct SettingsView: View {
                         enabled: $wordNotifEnabled
                     )
                     .onChange(of: wordNotifEnabled) { _ in
+                        Analytics.shared.logEvent("WordNotifToggled")
                         scheduleWordNotif()
                     }
 
@@ -46,6 +47,7 @@ struct SettingsView: View {
                         enabled: $quizNotifEnabled
                     )
                     .onChange(of: quizNotifEnabled) { _ in
+                        Analytics.shared.logEvent("QuizNotifToggled")
                         scheduleQuizNotif()
                     }
 
@@ -62,7 +64,29 @@ struct SettingsView: View {
                     Divider().background(Color.lexisDimmed).padding(.vertical, 16)
                     settingsSectionLabel("lock screen preview")
                         .padding(.bottom, 12)
-                    NotifPreview(wordTime: wordTime)
+                    VStack(spacing: 12) {
+                        if wordNotifEnabled {
+                            NotifPreview(
+                                title: "Today's word: Vellichor",
+                                bodyText: "Tap to see the definition",
+                                time: wordTime
+                            )
+                        }
+                        if quizNotifEnabled {
+                            NotifPreview(
+                                title: "Quiz time",
+                                bodyText: "Test yourself on today's word",
+                                time: quizTime
+                            )
+                        }
+                        if !wordNotifEnabled && !quizNotifEnabled {
+                            Text("Notifications disabled")
+                                .font(.system(size: 13))
+                                .foregroundColor(.lexisMuted)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 14)
+                        }
+                    }
 
                     Spacer(minLength: 40)
                 }
@@ -72,15 +96,18 @@ struct SettingsView: View {
                 .animation(.easeInOut(duration: 0.2), value: quizNotifEnabled)
             }
         }
-        .onAppear { loadSavedTimes() }
+        .onAppear {
+            Analytics.shared.logEvent("SettingsViewed")
+            loadSavedTimes()
+        }
     }
 
     // MARK: - Sub-views
 
     func settingsSectionLabel(_ text: String) -> some View {
         Text(text)
-            .font(.system(size: 9, weight: .regular))
-            .kerning(2)
+            .font(.system(size: 11, weight: .medium))
+            .kerning(1.6)
             .foregroundColor(.lexisSubtle)
             .padding(.bottom, 10)
     }
@@ -171,7 +198,9 @@ struct NotifRow: View {
 // MARK: - Notification preview card
 
 struct NotifPreview: View {
-    let wordTime: Date
+    let title: String
+    let bodyText: String
+    let time: Date
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -180,14 +209,14 @@ struct NotifPreview: View {
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.lexisSubtle)
                 Spacer()
-                Text(wordTime.formatted(.dateTime.hour().minute()))
+                Text(time.formatted(.dateTime.hour().minute()))
                     .font(.system(size: 10))
                     .foregroundColor(.lexisSubtle)
             }
-            Text("Today's word: Vellichor")
+            Text(title)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.lexisCream)
-            Text("Tap to see the definition")
+            Text(bodyText)
                 .font(.system(size: 12))
                 .foregroundColor(.lexisMuted)
         }
