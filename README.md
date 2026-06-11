@@ -1,6 +1,5 @@
 # Lexis — Guide
-<video src="lexis_demo.mp4" width="100%" controls>
-</video>
+
 ## Create the Xcode project
 
 1. Open Xcode → File → New → Project
